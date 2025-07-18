@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Shared util for the API Control Plane</Description>
+        
+    <Version>1.2.4</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<InternalsVisibleTo Include="Roblox.Api.ControlPlane"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Roblox.Http.Client.ApiControlPlane" Version="1.2.4" />
+    <PackageReference Include="Roblox.ApplicationTelemetry" Version="1.2.4" />
+  </ItemGroup>
+
+</Project>

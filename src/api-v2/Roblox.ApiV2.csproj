@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+        <Description>Legacy services assembly used by ServicesAPI to provide per-operation authentication.</Description>
+
+        <Version>1.2.4</Version>
+        <TargetFramework>net8.0</TargetFramework> <!-- Target .NET here as this is only used by WebAPIs -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Roblox.Web.Framework.Common" Version="1.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\api-control-plane\Roblox.Api.ControlPlane.csproj" />
+    <ProjectReference Include="..\service-api-control-plane\Roblox.Service.ApiControlPlane.csproj" />
+    <ProjectReference Include="..\operations\Roblox.Operations.csproj" />
+  </ItemGroup>
+
+</Project>

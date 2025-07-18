@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+        <Description>Operations monitoring for Roblox.</Description>
+
+        <Version>1.2.4</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Roblox.Instrumentation" Version="1.2.4" />
+  </ItemGroup>
+
+</Project>

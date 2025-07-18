@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CFA10E67-02C1-466C-B3C4-9E5444861FE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roblox.Api.ControlPlane", "src\api-control-plane\Roblox.Api.ControlPlane.csproj", "{E879DD48-939A-44C0-9E8B-12777CAB12B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roblox.Operations.Monitoring", "src\operations-monitoring\Roblox.Operations.Monitoring.csproj", "{3E300499-A856-4505-968A-844A880CFCFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roblox.Operations", "src\operations\Roblox.Operations.csproj", "{D370D490-E423-4475-B356-22E30B3DA9E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roblox.Service.ApiControlPlane", "src\service-api-control-plane\Roblox.Service.ApiControlPlane.csproj", "{D387EA95-7780-4CB7-A8D9-93F4EB851729}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roblox.ApiV2", "src\api-v2\Roblox.ApiV2.csproj", "{2290BB80-A842-4BF9-BAF9-75C7FB9729E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E879DD48-939A-44C0-9E8B-12777CAB12B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E879DD48-939A-44C0-9E8B-12777CAB12B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E879DD48-939A-44C0-9E8B-12777CAB12B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E879DD48-939A-44C0-9E8B-12777CAB12B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E300499-A856-4505-968A-844A880CFCFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E300499-A856-4505-968A-844A880CFCFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E300499-A856-4505-968A-844A880CFCFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E300499-A856-4505-968A-844A880CFCFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D370D490-E423-4475-B356-22E30B3DA9E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D370D490-E423-4475-B356-22E30B3DA9E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D370D490-E423-4475-B356-22E30B3DA9E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D370D490-E423-4475-B356-22E30B3DA9E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D387EA95-7780-4CB7-A8D9-93F4EB851729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D387EA95-7780-4CB7-A8D9-93F4EB851729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D387EA95-7780-4CB7-A8D9-93F4EB851729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D387EA95-7780-4CB7-A8D9-93F4EB851729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2290BB80-A842-4BF9-BAF9-75C7FB9729E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2290BB80-A842-4BF9-BAF9-75C7FB9729E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2290BB80-A842-4BF9-BAF9-75C7FB9729E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2290BB80-A842-4BF9-BAF9-75C7FB9729E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E879DD48-939A-44C0-9E8B-12777CAB12B0} = {CFA10E67-02C1-466C-B3C4-9E5444861FE7}
+		{3E300499-A856-4505-968A-844A880CFCFA} = {CFA10E67-02C1-466C-B3C4-9E5444861FE7}
+		{D370D490-E423-4475-B356-22E30B3DA9E3} = {CFA10E67-02C1-466C-B3C4-9E5444861FE7}
+		{D387EA95-7780-4CB7-A8D9-93F4EB851729} = {CFA10E67-02C1-466C-B3C4-9E5444861FE7}
+		{2290BB80-A842-4BF9-BAF9-75C7FB9729E0} = {CFA10E67-02C1-466C-B3C4-9E5444861FE7}
+	EndGlobalSection
+EndGlobal

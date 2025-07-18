@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<ProjectReference Include="..\service-api-control-plane\Roblox.Service.ApiControlPlane.csproj" />
+
+        <PackageReference Include="Roblox.ApplicationContext" Version="1.2.4" />
+        <PackageReference Include="Roblox.EventLog" Version="1.2.4" />
+        <PackageReference Include="Roblox.Data" Version="1.2.4" />
+        <PackageReference Include="Roblox.Caching" Version="1.2.4" />
+        <PackageReference Include="Roblox.MssqlDatabases" Version="1.2.4" />
+        <PackageReference Include="Roblox.Entities.Mssql" Version="1.2.4" />
+        <PackageReference Include="Roblox.Http.Client.ApiControlPlane" Version="1.2.4" />
+
+		<InternalsVisibleTo Include="Roblox.ApiControlPlane"/> <!-- API Control Plane operations -->
+	</ItemGroup>
+
+	<PropertyGroup>
+        <Description>Api Control Plane factories and entities</Description>
+
+        <Version>1.2.4</Version>
+	</PropertyGroup>
+
+</Project>

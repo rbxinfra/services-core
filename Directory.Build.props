@@ -1,0 +1,67 @@
+<Project>
+	<PropertyGroup Label="DefaultWarnings">
+		<NoWarn>$(NoWarn);4014</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Label="LibStandard">
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>10</LangVersion>
+	</PropertyGroup>
+
+	<Target Name="AddGitMetadaAssemblyAttributes" BeforeTargets="GetAssemblyAttributes">
+		<!--Executes
+    the Git Commands to get the Hash and Branch-->
+		<Exec Command="git rev-parse HEAD" ConsoleToMSBuild="true"
+		  StandardOutputImportance="low" IgnoreExitCode="true" Condition=" '$(CommitHash)' == '' ">
+			<Output TaskParameter="ConsoleOutput" PropertyName="CommitHash" />
+		</Exec>
+		<Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="true"
+		  StandardOutputImportance="low" IgnoreExitCode="true" Condition=" '$(CommitShortHash)' == '' ">
+			<Output TaskParameter="ConsoleOutput" PropertyName="CommitShortHash" />
+		</Exec>
+		<Exec Command="git rev-parse --abbrev-ref HEAD" ConsoleToMSBuild="true"
+		  StandardOutputImportance="low" IgnoreExitCode="true" Condition=" '$(CommitBranch)' == '' ">
+			<Output TaskParameter="ConsoleOutput" PropertyName="CommitBranch" />
+		</Exec>
+
+		<!--Generates
+    the ItemGroup and all AssemblyMetadata Tags-->
+		<ItemGroup>
+			<AssemblyMetadata Include="BuildTimestamp" Value="$([System.DateTime]::UtcNow.ToString(yyyy-MM-ddTHH:mm:ssK))" />
+			<AssemblyMetadata Condition=" $(CommitHash) != '' " Include="GitHash" Value="$(CommitHash)" />
+			<AssemblyMetadata Condition=" $(CommitBranch) != '' " Include="GitBranch" Value="$(CommitBranch)" />
+		</ItemGroup>
+	</Target>
+
+	<PropertyGroup Label="PackageMetadata">
+		<Company>Roblox</Company>
+		<Copyright>Copyright © $(Company) $([System.DateTime]::Now.ToString(`yyyy`)). All rights reserved.</Copyright>
+		<Authors>$(Company)</Authors>
+	</PropertyGroup>
+
+	<PropertyGroup Label="TestsProperties" Condition="$(MSBuildProjectName.Contains('.Tests'))">
+		<IsTestProject>true</IsTestProject>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Label="ComponentTestProperties" Condition="$(MSBuildProjectName.Contains('.Component.Test'))">
+		<IsComponentTestProject>true</IsComponentTestProject>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup Label="TestReferences" Condition="'$(IsTestProject)' == 'true' And '$(IsComponentTestProject)' != 'true'">
+		<PackageReference Include="NUnit" Version="4.1.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+
+		<Using Include="NUnit.Framework" />
+	</ItemGroup>
+
+	<PropertyGroup Label="PackageProperties" Condition="'$(IsTestProject)' != 'true' And '$(IsComponentTestProject)' != 'true'">
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<IsPackable>true</IsPackable>
+		<IncludeContentInPack>true</IncludeContentInPack>
+	</PropertyGroup>
+</Project>
