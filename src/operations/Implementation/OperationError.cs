@@ -1,4 +1,6 @@
-﻿namespace Roblox.Operations;
+﻿using System.Reflection;
+
+namespace Roblox.Operations;
 
 using System;
 using System.ComponentModel;
@@ -32,14 +34,10 @@ public class OperationError
     /// <param name="formatArgs">The arguments to use when formatting the message.</param>
     public OperationError(Enum codeEnum, params object[] formatArgs)
     {
-        if (codeEnum == null) throw new ArgumentNullException(nameof(codeEnum));
+        Code = codeEnum ?? throw new ArgumentNullException(nameof(codeEnum));
 
-        var code = EnumToString(codeEnum, out var hasDescription);
-
-        if (hasDescription) 
-            Message = formatArgs is { Length: > 0 } ? string.Format(code, formatArgs) : code;
-        else 
-            Code = codeEnum;
+        if (ExtractEnumDescription(codeEnum, out var description)) 
+            Message = formatArgs is { Length: > 0 } ? string.Format(description, formatArgs) : description;
     }
 
     /// <summary>
@@ -55,14 +53,18 @@ public class OperationError
         Message = formatArgs is { Length: > 0 } ? string.Format(message, formatArgs) : message;
     }
 
-    private static string EnumToString(Enum codeEnum, out bool hasDescription)
+    private static bool ExtractEnumDescription(Enum codeEnum, out string description)
     {
+        description = null;
+        
         // Try to use the DescriptionAttribute if it exists.
-        var description = codeEnum.GetType().GetField(codeEnum.ToString())?.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        var descriptionAttrib = codeEnum.GetType().GetField(codeEnum.ToString())?.GetCustomAttribute<DescriptionAttribute>();
 
-        hasDescription = description?.Length > 0;
+        var hasDescription = descriptionAttrib is not null;
+        if (hasDescription)
+            description = descriptionAttrib.Description;
 
-        return hasDescription ? ((DescriptionAttribute)description?[0])?.Description : codeEnum.ToString();
+        return hasDescription;
     }
 
     /// <summary>
