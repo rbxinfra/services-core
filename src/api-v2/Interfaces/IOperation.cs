@@ -55,7 +55,7 @@ public interface IOperation
 /// Version of <see cref="IOperation"/> that takes a request
 /// </summary>
 /// <typeparam name="TRequest">The type of the request object.</typeparam>
-public interface IOperation<TRequest>
+public interface IOperation<TRequest> : IOperation
 {
     /// <summary>
     /// Gets the request for the operation.

@@ -94,7 +94,7 @@ public abstract class Operation : IOperation
 public abstract class Operation<TRequest> : Operation, IOperation<TRequest>
 {
     /// <inheritdoc cref="IOperation{TRequest}.Request" />
-    public TRequest Request { get; private set; }
+    public TRequest Request { get; }
 
     /// <summary>
     /// Construct a new instance of <see cref="Operation" />
@@ -109,5 +109,6 @@ public abstract class Operation<TRequest> : Operation, IOperation<TRequest>
     protected Operation(TRequest request, IService service, IAuthority authority)
         : base(service, authority)
     {
+        Request = request;
     }
 }

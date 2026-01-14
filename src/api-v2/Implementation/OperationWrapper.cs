@@ -44,7 +44,7 @@ public class OperationWrapper : Operation
         var operationError = _MigrationOperation.Execute();
 
         if (operationError != null)
-            throw new OperationException(operationError.Message ?? operationError.Code);
+            throw new OperationException(operationError.Message ?? operationError.Code.ToString());
     }
 }
 
@@ -86,6 +86,6 @@ public class OperationWrapper<TRequest> : Operation<TRequest>
         var operationError = _MigrationOperation.Execute(Request);
 
         if (operationError != null)
-            throw new OperationException(operationError.Message ?? operationError.Code);
+            throw new OperationException(operationError.Message ?? operationError.Code.ToString());
     }
 }

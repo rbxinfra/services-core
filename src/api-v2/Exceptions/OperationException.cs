@@ -4,7 +4,7 @@ using System;
 
 /// <summary>
 /// Exception thrown when an error occurs in an operation.
-/// Use this for more details errors outside of generic exceptions.
+/// Use this for more details errors outside generic exceptions.
 /// </summary>
 public class OperationException : Exception
 {

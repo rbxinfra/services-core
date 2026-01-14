@@ -44,7 +44,7 @@ public class ResultOperationWrapper<TResult> : ResultOperation<TResult>
         var (result, operationError) = _MigrationOperation.Execute();
 
         if (operationError != null)
-            throw new OperationException(operationError.Message ?? operationError.Code);
+            throw new OperationException(operationError.Message ?? operationError.Code.ToString());
 
         Result = result;
     }
@@ -88,7 +88,7 @@ public class ResultOperationWrapper<TRequest, TResult> : ResultOperation<TReques
         var (result, operationError) = _MigrationOperation.Execute(Request);
 
         if (operationError != null)
-            throw new OperationException(operationError.Message ?? operationError.Code);
+            throw new OperationException(operationError.Message ?? operationError.Code.ToString());
 
         Result = result;
     }

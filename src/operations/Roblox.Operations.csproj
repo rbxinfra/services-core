@@ -3,7 +3,7 @@
   <PropertyGroup>
         <Description>Assembly for providing common interfaces and classes for service operations.</Description>
 
-        <Version>1.2.4</Version>
+        <Version>1.2.5</Version>
   </PropertyGroup>
 
   <ItemGroup>

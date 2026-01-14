@@ -16,7 +16,7 @@ public class OperationError
     /// The error code.
     /// </summary>
     [DataMember(Name = "code")]
-    public string Code { get; set; }
+    public Enum Code { get; set; }
 
     /// <summary>
     /// The error message.
@@ -39,7 +39,7 @@ public class OperationError
         if (hasDescription) 
             Message = formatArgs is { Length: > 0 } ? string.Format(code, formatArgs) : code;
         else 
-            Code = code;
+            Code = codeEnum;
     }
 
     /// <summary>
@@ -57,15 +57,12 @@ public class OperationError
 
     private static string EnumToString(Enum codeEnum, out bool hasDescription)
     {
-        // Try use the DescriptionAttribute if it exists.
+        // Try to use the DescriptionAttribute if it exists.
         var description = codeEnum.GetType().GetField(codeEnum.ToString())?.GetCustomAttributes(typeof(DescriptionAttribute), false);
 
         hasDescription = description?.Length > 0;
 
-        if (hasDescription)
-            return ((DescriptionAttribute)description[0]).Description;
-
-        return codeEnum.ToString();
+        return hasDescription ? ((DescriptionAttribute)description?[0])?.Description : codeEnum.ToString();
     }
 
     /// <summary>

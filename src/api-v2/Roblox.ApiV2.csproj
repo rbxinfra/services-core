@@ -2,7 +2,7 @@
   <PropertyGroup>
         <Description>Legacy services assembly used by ServicesAPI to provide per-operation authentication.</Description>
 
-        <Version>1.2.4</Version>
+        <Version>1.2.6</Version>
         <TargetFramework>net8.0</TargetFramework> <!-- Target .NET here as this is only used by WebAPIs -->
   </PropertyGroup>
 

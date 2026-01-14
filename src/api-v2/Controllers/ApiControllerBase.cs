@@ -33,8 +33,8 @@ public abstract class ApiControllerBase : Controller
 
     private string GetApiKey()
     {
-        if (Request.Headers.TryGetValue(_ApiKeyHeaderKey, out var apiKey)) return apiKey;
-        if (Request.Query.TryGetValue(_ApiKeyQueryKey, out apiKey)) return apiKey;
+        if (Request.Headers.TryGetValue(_ApiKeyHeaderKey, out var apiKey) || Request.Query.TryGetValue(_ApiKeyQueryKey, out apiKey)) 
+            return apiKey;
 
         return string.Empty;
     }
@@ -55,9 +55,7 @@ public abstract class ApiControllerBase : Controller
         }
         catch (OperationException ex) { return HandleOperationException(ex); }
 
-        if (status != ExecutionStatus.Success) return HandleExecutionStatus(status);
-    
-        return Ok();
+        return status != ExecutionStatus.Success ? HandleExecutionStatus(status) : Ok();
     }
 
     /// <summary>
@@ -77,9 +75,7 @@ public abstract class ApiControllerBase : Controller
         }
         catch (OperationException ex) { return HandleOperationException(ex); }
 
-        if (status != ExecutionStatus.Success) return HandleExecutionStatus(status);
-    
-        return Json(new { data = operation.Result });
+        return status != ExecutionStatus.Success ? HandleExecutionStatus(status) : Json(new { data = operation.Result });
     }
 
     /// <summary>
@@ -100,9 +96,7 @@ public abstract class ApiControllerBase : Controller
         }
         catch (OperationException ex) { return Task.FromResult(HandleOperationException(ex)); }
 
-        if (status != ExecutionStatus.Success) return Task.FromResult(HandleExecutionStatus(status));
-    
-        return Task.FromResult<IActionResult>(Ok());
+        return status != ExecutionStatus.Success ? Task.FromResult(HandleExecutionStatus(status)) : Task.FromResult<IActionResult>(Ok());
     }
 
     /// <summary>
@@ -124,9 +118,7 @@ public abstract class ApiControllerBase : Controller
         }
         catch (OperationException ex) { return Task.FromResult(HandleOperationException(ex)); }
 
-        if (status != ExecutionStatus.Success) return Task.FromResult(HandleExecutionStatus(status));
-    
-        return Task.FromResult<IActionResult>(Json(new { data = operation.Result }));
+        return status != ExecutionStatus.Success ? Task.FromResult(HandleExecutionStatus(status)) : Task.FromResult<IActionResult>(Json(new { data = operation.Result }));
     }
 
     /// <summary>
