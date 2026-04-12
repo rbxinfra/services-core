@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/api-control-plane/Roblox.Api.ControlPlane.csproj" />
+    <Project Path="src/api-v2/Roblox.ApiV2.csproj" />
+    <Project Path="src/operations-monitoring/Roblox.Operations.Monitoring.csproj" />
+    <Project Path="src/operations/Roblox.Operations.csproj" />
+    <Project Path="src/service-api-control-plane/Roblox.Service.ApiControlPlane.csproj" />
+  </Folder>
+</Solution>

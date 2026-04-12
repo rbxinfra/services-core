@@ -7,6 +7,7 @@ on:
       - "src/**"
       - ".github/workflows/**"
       - "*.sln"
+      - "*.slnx"
 
   push:
     branches:
@@ -15,6 +16,7 @@ on:
       - "src/**"
       - ".github/workflows/**"
       - "*.sln"
+      - "*.slnx"
 
 env:
   DOTNET_NOLOGO: true
@@ -56,10 +58,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup .NET 8
+      - name: Setup .NET 10
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 10.0.x
 
       # Build
       - name: Restore NuGet Packages
